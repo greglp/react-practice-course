@@ -10,10 +10,15 @@ class AddPlayerForm extends Component {
         this.setState({ value: e.target.value });
     }
 
+    handeSubmit = (e) => {
+        e.preventDefault();
+        this.props.addPlayer(this.state.value);
+        this.setState({ value: ''});
+    }
+
     render() {
-        console.log(this.state.value);
         return (
-            <form>
+            <form onSubmit={this.handeSubmit}>
                 <input 
                     type="text"
                     value={this.state.value}
@@ -23,9 +28,8 @@ class AddPlayerForm extends Component {
 
                 <input 
                     type="submit"
-                    value="Add a Player"
+                    value="Add a Player" 
                 />
-
             </form>
         );
     }
